@@ -619,3 +619,137 @@ header.scrolled .mobile-menu-btn { color: var(--navy); }
     .gallery-item img { height: 250px; }
     .tech-img { height: 300px; }
 }
+
+/* --- 고도화 기능 스타일 --- */
+
+/* Before/After Slider */
+.slider-container {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    margin: 40px auto;
+    height: 500px;
+    overflow: hidden;
+    border-radius: 30px;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.25);
+    background: #000;
+}
+.slider-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+.slider-before {
+    z-index: 1;
+}
+.slider-after {
+    z-index: 2;
+    width: 50%;
+    border-right: 3px solid var(--gold);
+}
+.slider-handle {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 4px;
+    height: 100%;
+    background: var(--gold);
+    z-index: 3;
+    cursor: ew-resize;
+    transform: translateX(-50%);
+}
+.slider-handle::after {
+    content: '\f337';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    background: var(--gold);
+    color: var(--navy);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 30px rgba(197, 168, 128, 0.8);
+    font-size: 1.2rem;
+}
+.slider-label {
+    position: absolute;
+    bottom: 20px;
+    padding: 8px 16px;
+    background: rgba(0,0,0,0.6);
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 700;
+    border-radius: 8px;
+    z-index: 4;
+}
+.label-before { left: 20px; }
+.label-after { right: 20px; }
+
+/* Advanced Booking UI */
+.input-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+.booking-form input[type="date"],
+.booking-form input[type="time"] {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    padding: 12px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    outline: none;
+    cursor: pointer;
+}
+.booking-form input:focus { border-color: var(--gold); }
+
+/* Smile Magazine Section */
+.magazine-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+.magazine-card {
+    background: white;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 15px 45px rgba(0,0,0,0.06);
+    transition: var(--transition);
+    border: 1px solid rgba(0,0,0,0.03);
+}
+.magazine-card:hover { transform: translateY(-12px); box-shadow: 0 30px 60px rgba(0,0,0,0.1); }
+.mag-img { height: 220px; background-size: cover; background-position: center; position: relative; }
+.mag-img::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.3));
+}
+.mag-content { padding: 30px; }
+.mag-tag { 
+    background: rgba(197, 168, 128, 0.1);
+    color: var(--gold); 
+    font-size: 0.75rem; 
+    font-weight: 800; 
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 15px; 
+    display: inline-block; 
+}
+.mag-content h4 { margin-bottom: 15px; font-size: 1.4rem; color: var(--navy); line-height: 1.3; }
+.mag-content p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px; }
+.mag-link { color: var(--navy); font-weight: 700; text-decoration: none; display: flex; align-items: center; gap: 8px; transition: 0.3s; }
+.mag-link:hover { gap: 12px; color: var(--gold); }

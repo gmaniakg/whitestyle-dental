@@ -9,6 +9,33 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // CountUp Animation Trigger
     initCounters();
+
+    // --- Before/After Slider Logic ---
+    const sliderContainer = document.querySelector('.slider-container');
+    const sliderHandle = document.getElementById('slider-handle');
+    const sliderAfter = document.getElementById('slider-after');
+
+    if (sliderContainer && sliderHandle && sliderAfter) {
+        const moveSlider = (e) => {
+            let x;
+            if (e.type === 'touchmove') {
+                x = e.touches[0].pageX - sliderContainer.getBoundingClientRect().left;
+            } else {
+                x = e.pageX - sliderContainer.getBoundingClientRect().left;
+            }
+            
+            let containerWidth = sliderContainer.offsetWidth;
+            if (x < 0) x = 0;
+            if (x > containerWidth) x = containerWidth;
+            
+            let percentage = (x / containerWidth) * 100;
+            sliderHandle.style.left = percentage + '%';
+            sliderAfter.style.width = percentage + '%';
+        };
+
+        sliderContainer.addEventListener('mousemove', moveSlider);
+        sliderContainer.addEventListener('touchmove', moveSlider);
+    }
 });
 
 // Header Scroll Effect
@@ -145,46 +172,46 @@ chatInput.addEventListener('keypress', (e) => {
 // --- Booking Form Submission Logic (Web3Forms) ---
 const bookingForm = document.getElementById('bookingForm');
 if (bookingForm) {
-    bookingForm.addEventListener('submit', async function(e) {
+    bookingForm.addEventListener('submit', function(e) {
         e.preventDefault();
+        const submitBtn = this.querySelector('button');
+        const originalText = submitBtn.innerText;
         
-        // --- ⚠️ 중요: Web3Forms 액세스 키 설정 ---
-        // web3forms.com 에 접속하여 ymaniak@yahoo.com 이메일로 발급받은 액세스 키를 아래에 입력하세요.
-        const accessKey = "82b8c61c-c1f7-4153-9e87-69efc30c28dd"; 
-        
-        if (accessKey === "YOUR_ACCESS_KEY_HERE") {
-            alert("시스템 안내: 무료 상담 폼을 활성화하려면 web3forms.com에서 액세스 키를 발급받아 script.js에 입력해주세요.");
-            return;
-        }
-
-        const submitBtn = bookingForm.querySelector('button[type="submit"]');
-        const originalBtnText = submitBtn.innerText;
-        submitBtn.innerText = "전송 중...";
+        // Show processing state
+        submitBtn.innerText = '가용 일정 확인 중...';
         submitBtn.disabled = true;
 
-        const formData = new FormData(bookingForm);
-        formData.append("access_key", accessKey);
-        formData.append("subject", "[화이트스타일치과] 새로운 VVIP 상담 신청이 접수되었습니다");
-        formData.append("from_name", "화이트스타일 웹사이트");
-        
-        try {
-            const response = await fetch("https://api.web3forms.com/submit", {
-                method: "POST",
-                body: formData
-            });
-            const data = await response.json();
+        const formData = new FormData(this);
+        const data = Object.fromEntries(formData.entries());
 
-            if (data.success) {
-                alert("상담 신청이 성공적으로 완료되었습니다. 기재해주신 연락처로 곧 연락드리겠습니다.");
+        // Simulate server check and email sending
+        fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify({
+                access_key: "79b47e09-08f3-42e1-8848-03876e6550f2", // Web3Forms Access Key
+                subject: `[VVIP 예약] ${data.name}님의 예약 신청`,
+                from_name: "White Style Dental",
+                message: `
+                    성함: ${data.name}
+                    연락처: ${data.phone}
+                    희망일자: ${data.date}
+                    희망시간: ${data.time}
+                    관심과목: ${data.interest}
+                `
+            })
+        })
+        .then(async (response) => {
+            if (response.status == 200) {
+                alert(`${data.name}님, 선택하신 ${data.date} ${data.time}에 예약 상담이 접수되었습니다. 담당 디렉터가 곧 연락드리겠습니다.`);
                 bookingForm.reset();
             } else {
-                alert("전송에 실패했습니다. 잠시 후 다시 시도해주세요.");
+                alert('일시적인 오류가 발생했습니다. 다시 시도해 주세요.');
             }
-        } catch (error) {
-            alert("네트워크 오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
-        } finally {
-            submitBtn.innerText = originalBtnText;
+        })
+        .finally(() => {
+            submitBtn.innerText = originalText;
             submitBtn.disabled = false;
-        }
+        });
     });
 }

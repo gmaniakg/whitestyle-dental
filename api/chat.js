@@ -6,10 +6,11 @@ export default async function handler(req, res) {
   const { prompt } = req.body;
   
   // Vercel 프로젝트 설정(Settings) -> Environment Variables에 GEMINI_API_KEY를 등록하세요.
-  const apiKey = process.env.GEMINI_API_KEY; 
+  // 로컬 테스트 환경에서 변수를 불러오지 못할 경우를 대비해 예비 키를 설정합니다.
+  const apiKey = process.env.GEMINI_API_KEY || "AIzaSyBqJwSKUIOvcBEZt4H88IJh-VR7_TdqOW8"; 
 
   if (!apiKey) {
-    return res.status(500).json({ error: 'API Key not configured in Environment Variables' });
+    return res.status(500).json({ error: 'API Key not configured' });
   }
 
   try {
