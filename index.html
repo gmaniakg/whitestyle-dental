@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>화이트스타일치과 | 강남역 임플란트 치아교정 프리미엄 스마일 디렉팅</title>
+    <meta name="description" content="강남역 1번 출구 화이트스타일치과. 상위 1%를 위한 퍼스널 스마일 디렉팅, 임플란트, 치아교정, 라미네이트 전문.">
+    <meta name="keywords" content="화이트스타일치과, 강남역 치과, 강남역 임플란트, 강남역 치아교정, 강남역 라미네이트, 스마일 디렉팅">
+    <!-- Premium Font: Pretendard -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- AOS Library for Scroll Animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Chat Widget CSS -->
+    <style>
+        .chat-widget-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 65px;
+            height: 65px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(197, 168, 128, 0.4);
+            z-index: 2000;
+            transition: var(--transition);
+        }
+        .chat-widget-toggle:hover { transform: scale(1.1) rotate(15deg); }
+        
+        .chat-modal {
+            position: fixed;
+            bottom: 110px;
+            right: 30px;
+            width: 400px;
+            height: 600px;
+            background: rgba(10, 25, 47, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            z-index: 2000;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .chat-header-ai {
+            padding: 20px;
+            background: var(--gold);
+            color: var(--navy);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 700;
+        }
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .chat-input-area {
+            padding: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            gap: 10px;
+        }
+        .chat-input-area input {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 12px;
+            color: white;
+            outline: none;
+        }
+        .ai-bubble {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 14px 18px;
+            border-radius: 18px 18px 18px 4px;
+            max-width: 85%;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        .user-bubble {
+            background: var(--gold);
+            color: #0A192F;
+            padding: 14px 18px;
+            border-radius: 18px 18px 4px 18px;
+            max-width: 85%;
+            align-self: flex-end;
+            font-size: 0.95rem;
+            font-weight: 600;
+            line-height: 1.6;
+            box-shadow: 0 4px 15px rgba(197, 168, 128, 0.2);
+        }
+    </style>
+
+</head>
+<body>
+
+    <!-- Header/Navigation -->
+    <header id="navbar">
+        <div class="container">
+            <div class="logo">WHITE<span class="gold-text">STYLE</span></div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home">홈</a></li>
+                    <li><a href="#trust">신뢰의 증명</a></li>
+                    <li><a href="#about">치과소개</a></li>
+                    <li><a href="#services">진료과목</a></li>
+                    <li><a href="#gallery">시술사례</a></li>
+                    <li><a href="#technology">보유장비</a></li>
+                    <li><a href="#contact">오시는길</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container hero-container">
+            <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+                <div class="badge">강남역 1번 출구 | 프리미엄 치과</div>
+                <h1>상위 1%를 위한<br><span class="highlight">퍼스널 스마일 디렉팅</span></h1>
+                <p>당신의 가장 아름다운 미소, 화이트스타일이 설계합니다.<br>지금 바로 VVIP 상담을 경험해 보세요.</p>
+            </div>
+            
+            <!-- Quick Booking Widget (Glassmorphism) -->
+            <div class="booking-widget" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="300">
+                <h3>빠른 상담 예약</h3>
+                <p>대기 없이 가장 빠른 일정을 찾아드립니다.</p>
+                <form class="booking-form" id="bookingForm">
+                    <div class="input-group">
+                        <i class="fas fa-user"></i>
+                        <input type="text" name="name" placeholder="성함" required>
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-phone"></i>
+                        <input type="tel" name="phone" placeholder="연락처 ('-' 제외)" required>
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-tooth"></i>
+                        <select name="interest" required>
+                            <option value="" disabled selected>관심 진료과목 선택</option>
+                            <option value="임플란트">임플란트</option>
+                            <option value="치아교정">치아교정</option>
+                            <option value="심미보철 / 라미네이트">심미보철 / 라미네이트</option>
+                            <option value="일반진료 / 검진">일반진료 / 검진</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-gold glow-effect">무료 상담 신청하기</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust / Social Proof Section -->
+    <section id="trust" class="trust-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="stat-number"><span class="counter" data-target="30">0</span>년</div>
+                    <div class="stat-desc">강남역 한 자리 무사고</div>
+                </div>
+                <div class="stat-item" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="stat-number"><span class="counter" data-target="60000">0</span>명+</div>
+                    <div class="stat-desc">누적 진료/디자인 건수</div>
+                </div>
+                <div class="stat-item" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="stat-number"><span class="counter" data-target="93.6">0</span>%</div>
+                    <div class="stat-desc">환자 소개 및 지인 추천율</div>
+                </div>
+                <div class="stat-item" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="stat-number"><span class="counter" data-target="3">0</span>D</div>
+                    <div class="stat-desc">최첨단 디지털 정밀진단</div>
+                </div>
+            </div>
+            
+            <!-- Recurring CTA -->
+            <div class="section-cta" data-aos="fade-up">
+                <p>프리미엄 상담은 단 한 번의 클릭으로 시작됩니다</p>
+                <a href="#home" class="btn btn-gold glow-effect">VVIP 상담 신청하기</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>The White Style Promise</h2>
+                <p>타협하지 않는 진료 철학으로 환자 중심의 가치를 실현합니다.</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-img" data-aos="fade-right">
+                    <!-- Placeholder replaced with high-end aesthetic overlay -->
+                    <div class="premium-image-box">
+                        <div class="overlay-text">PREMIUM<br>CARE</div>
+                    </div>
+                </div>
+                <div class="about-text" data-aos="fade-left">
+                    <h3>결과가 증명하는 최상위 의료진의 기술력</h3>
+                    <p>화이트스타일치과는 3D CT, 3D 구강 스캐너 등 최첨단 디지털 진단 장비를 통해 0.1mm의 오차도 허용하지 않는 정밀한 계획을 수립합니다. 과잉 진료 없는 투명한 소통으로 오직 당신만을 위한 마스터피스를 완성합니다.</p>
+                    <ul class="about-list">
+                        <li><i class="fas fa-check-circle"></i> 대학병원급 철저한 14단계 멸균 소독 시스템</li>
+                        <li><i class="fas fa-check-circle"></i> 자체 기공소 운영을 통한 빠르고 정밀한 보철물 제작</li>
+                        <li><i class="fas fa-check-circle"></i> 무통 마취기 장비 도입으로 두려움 없는 편안한 진료</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline-navy mt-20">오시는 길 보기 <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Recurring CTA -->
+            <div class="section-cta" data-aos="fade-up">
+                <p>프리미엄 상담은 단 한 번의 클릭으로 시작됩니다</p>
+                <a href="#home" class="btn btn-gold glow-effect">VVIP 상담 신청하기</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery section bg-light-gray">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Visual Proof</h2>
+                <p>수만 건의 데이터가 증명하는 화이트스타일의 압도적 결과</p>
+            </div>
+            <div class="gallery-grid" data-aos="fade-up" data-aos-delay="200">
+                <div class="gallery-item">
+                    <img src="assets/before_after_smile_1778488534261.png" alt="비포 앤 애프터 시술 사례">
+                    <div class="gallery-overlay">
+                        <h4>프리미엄 라미네이트</h4>
+                        <p>무삭제 최소 세팅 완료</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Section -->
+    <section id="technology" class="technology section">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Advanced Technology</h2>
+                <p>대학병원급 첨단 장비로 오차율 0%에 도전합니다</p>
+            </div>
+            <div class="about-grid" style="direction: rtl;">
+                <div class="about-img" data-aos="fade-left" style="direction: ltr;">
+                    <img src="assets/dental_equipment_3d_1778488548418.png" alt="3D CT Scanner" class="tech-img">
+                </div>
+                <div class="about-text" data-aos="fade-right" style="direction: ltr;">
+                    <h3>3D 정밀 진단 시스템</h3>
+                    <p>눈에 보이지 않는 뼈의 구조와 신경선의 위치까지 정확하게 파악하는 3D CBCT 스캐너를 운용합니다. 경험과 감각에만 의존하지 않고, 과학적 데이터를 바탕으로 가장 안전한 수술 경로를 설계합니다.</p>
+                    <ul class="about-list mt-20">
+                        <li><i class="fas fa-microchip"></i> 3D 컴퓨터 모의 수술 가능</li>
+                        <li><i class="fas fa-shield-alt"></i> 방사선 노출량을 최소화한 저선량 장비</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services section bg-navy text-white">
+        <div class="container">
+            <div class="section-title light-title" data-aos="fade-up">
+                <h2>Our Signature Services</h2>
+                <p>기본기부터 하이엔드 수술까지, 완벽을 추구합니다</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card dark-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="icon-box-gold"><i class="fas fa-tooth"></i></div>
+                    <h3>디지털 네비게이션 임플란트</h3>
+                    <p>3D 모의수술을 통해 최소 절개로 통증과 회복 기간을 획기적으로 줄인 맞춤형 임플란트 시술입니다.</p>
+                </div>
+                <div class="service-card dark-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="icon-box-gold"><i class="fas fa-teeth-open"></i></div>
+                    <h3>투명 & 3D 치아교정</h3>
+                    <p>심미성을 해치지 않으면서 얼굴의 황금 비율을 찾아주는 정밀 교정 솔루션을 제공합니다.</p>
+                </div>
+                <div class="service-card dark-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="icon-box-gold"><i class="fas fa-gem"></i></div>
+                    <h3>제로세팅 라미네이트</h3>
+                    <p>치아 삭제를 최소화하여 시림 증상 없이, 가장 자연스럽고 눈부신 연예인 스마일 라인을 완성합니다.</p>
+                </div>
+            </div>
+
+            <!-- Recurring CTA (Light Version) -->
+            <div class="section-cta light" data-aos="fade-up">
+                <p>프리미엄 상담은 단 한 번의 클릭으로 시작됩니다</p>
+                <a href="#home" class="btn btn-gold glow-effect">VVIP 상담 신청하기</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-info">
+                    <div class="logo light">WHITE<span class="gold-text">STYLE</span></div>
+                    <p>서울특별시 강남구 강남대로 123, 화이트타워 5층<br>(강남역 1번 출구 도보 1분)</p>
+                    <p class="mt-10"><strong>상담 및 예약:</strong> 02-1234-5678</p>
+                </div>
+                <div class="footer-hours">
+                    <h4>진료 시간</h4>
+                    <p><span>평일</span> 09:30 - 18:30</p>
+                    <p><span>야간(화,목)</span> 09:30 - 20:30</p>
+                    <p><span>토요일</span> 09:30 - 14:00</p>
+                    <p class="text-light-gray">* 일요일 및 공휴일 휴무</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 White Style Dental Clinic. All Rights Reserved. Designed by Antigravity.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chat Widget -->
+    <div class="chat-widget-toggle" id="chat-toggle">
+        <i class="fas fa-comment-dots"></i>
+    </div>
+    
+    <div class="chat-modal" id="chat-modal">
+        <div class="chat-header-ai">
+            <span>SMILE DIRECTOR AI</span>
+            <i class="fas fa-times" style="cursor:pointer" id="chat-close"></i>
+        </div>
+        <div class="chat-messages" id="chat-messages">
+            <div class="ai-bubble">안녕하세요! 화이트스타일치과 AI 어시스턴트입니다. 무엇을 도와드릴까요?</div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="chat-input" placeholder="궁금한 점을 물어보세요...">
+            <button class="btn-gold" style="width: auto; padding: 10px 20px; border-radius: 10px;" id="chat-send"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>
